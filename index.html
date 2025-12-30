@@ -23,6 +23,14 @@
     display: flex; justify-content: center; align-items: center;
   }
 
+  /* Inactive Modal Style */
+  #inactive-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 1000;
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 20px; box-sizing: border-box;
+  }
+
   .login-status-bar {
     display: flex; align-items: center; justify-content: center;
     gap: 8px; font-family: 'Orbitron'; font-size: 10px; color: #888;
@@ -67,11 +75,6 @@
     box-shadow: 0 5px 15px rgba(255, 26, 26, 0.3);
   }
 
-  #loader { display: none; margin: 20px 0; }
-  .bar-container { width: 100%; height: 3px; background: #111; border-radius: 5px; overflow: hidden; }
-  .bar-fill { width: 0%; height: 100%; background: var(--primary); animation: fill 2s infinite; }
-  @keyframes fill { 0% { width: 0; } 100% { width: 100%; } }
-
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
   .sig-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 15px; border-radius: 18px; }
   .sig-odd { font-size: 22px; color: var(--gold); font-weight: bold; display: block; }
@@ -81,12 +84,20 @@
     display: flex; justify-content: center; align-items: center;
     padding: 14px; border-radius: 12px; font-weight: bold; margin-top: 15px; gap: 8px;
   }
-  .copy-btn { background: #fff; color: #000; margin-top: 10px; font-size: 13px; width: 100%; }
 
   #splash, #login-panel { width: 90%; max-width: 350px; text-align: center; }
 </style>
 </head>
 <body>
+
+<div id="inactive-overlay">
+    <i class="fas fa-exclamation-triangle" style="font-size: 50px; color: var(--primary); margin-bottom: 20px;"></i>
+    <h2 style="font-family: Orbitron; color: #fff;">DEVICE INACTIVE</h2>
+    <p style="color: #ccc; line-height: 1.6;">මෙම ඩිවයිස් එක දැනට අක්‍රිය කර ඇත. මෙය නැවත සක්‍රිය කර ගැනීමට කරුණාකර <b>App Creator Prakash Vidura Lakshan</b> සම්බන්ධ කරගන්න.</p>
+    <a href="https://wa.me/YOUR_NUMBER" class="wa-btn" style="width: 200px;">
+        <i class="fab fa-whatsapp"></i> CONTACT NOW
+    </a>
+</div>
 
 <div id="splash">
   <div style="font-size: 60px; filter: drop-shadow(0 0 10px var(--primary));">🐉</div>
@@ -101,40 +112,12 @@
 </div>
 
 <div id="app-container">
-  <div class="login-status-bar"><div class="neon-dot"></div> ACTIVE VIP SESSION</div>
-  <h1 class="brand-title">DRAGON BET</h1>
-
-  <div class="license-card">
-    <span style="font-size: 11px; color: #666;">Account Status</span>
-    <div class="days-display" id="remDays">30</div>
-    <span style="font-size:10px; color:var(--gold);">VIP ACCESS GRANTED</span>
-  </div>
-
-  <div style="display:flex; justify-content:space-between; font-size:10px; color:#666; font-family:Orbitron; margin-bottom:10px;">
-    <span id="time-now">00:00:00</span>
-    <span id="user-display">USER: VIP_MEMBER</span>
-  </div>
-
-  <input type="number" id="input-odd" class="login-input" placeholder="Enter Last Odd">
-  <button class="btn-vip" onclick="triggerSignals()">GENERATE SIGNALS</button>
-
-  <div id="loader">
-    <p style="font-size:11px; color:var(--primary); font-family:Orbitron; margin-bottom:8px;">FETCHING AI PREDICTIONS...</p>
-    <div class="bar-container"><div class="bar-fill"></div></div>
-  </div>
-
-  <div class="grid" id="signal-grid"></div>
-
-  <div id="actions" style="display:none;">
-    <button class="btn-vip copy-btn" onclick="copyAll()"><i class="fas fa-copy"></i> COPY ALL SIGNALS</button>
-  </div>
-
-  <a href="https://wa.me/YOUR_NUMBER" class="wa-btn">
-    <i class="fab fa-whatsapp"></i> MESSAGE ADMIN
-  </a>
-</div>
+    </div>
 
 <script>
+  // මෙහි true යනු අක්‍රිය තත්ත්වයයි. පසුව ඇතුළට යාමට මෙය false කරන්න.
+  let isDeviceInactive = true; 
+
   window.onload = () => {
     setTimeout(() => {
       document.getElementById('splash').style.display = 'none';
@@ -144,76 +127,21 @@
 
   function validateLogin() {
     const pass = document.getElementById('pPass').value;
-    const correctPass = "DragonBet2026"; // ඔබ ඉල්ලා සිටි නව Password එක
+    const correctPass = "DragonBet2026";
 
     if (pass === correctPass) {
-        document.getElementById('login-panel').style.display = 'none';
-        document.getElementById('app-container').style.display = 'block';
+        // පාස්වර්ඩ් එක හරි වුවත් ඩිවයිස් එක අක්‍රිය නම් පණිවිඩය පෙන්වයි
+        if (isDeviceInactive) {
+            document.getElementById('login-panel').style.display = 'none';
+            document.getElementById('inactive-overlay').style.display = 'flex';
+        } else {
+            document.getElementById('login-panel').style.display = 'none';
+            document.getElementById('app-container').style.display = 'block';
+        }
     } else {
         alert("Invalid Password!");
     }
   }
-
-  let finalCopy = "";
-
-  function triggerSignals() {
-    const lastOdd = document.getElementById('input-odd').value;
-    if(!lastOdd) { alert("Please enter last odd!"); return; }
-    
-    document.getElementById('signal-grid').innerHTML = "";
-    document.getElementById('actions').style.display = "none";
-    document.getElementById('loader').style.display = "block";
-
-    setTimeout(() => {
-      document.getElementById('loader').style.display = "none";
-      makeSignals();
-    }, 2000);
-  }
-
-  function makeSignals() {
-    const grid = document.getElementById('signal-grid');
-    finalCopy = "🐉 *DRAGON BET VIP SIGNALS* 🐉\n\n";
-    
-    for(let i=1; i<=4; i++) {
-      const dateObj = new Date(Date.now() + (i * 2) * 60000);
-      const hours = String(dateObj.getHours()).padStart(2, '0');
-      const mins = String(dateObj.getMinutes()).padStart(2, '0');
-      const secs = String(dateObj.getSeconds()).padStart(2, '0');
-      const fullTime = `${hours}:${mins}:${secs}`;
-      
-      const oddValue = (Math.random() * 2 + 1.5).toFixed(2);
-      
-      grid.innerHTML += `
-        <div class="sig-box">
-          <span style="font-size:11px; color:#555;">${fullTime}</span>
-          <span class="sig-odd">${oddValue}x</span>
-          <span style="font-size:9px; color:var(--whatsapp);">99% SAFE</span>
-        </div>`;
-      
-      finalCopy += `⏰ ${fullTime} -> 🎯 ${oddValue}x\n`;
-    }
-    
-    finalCopy += "\n🚀 JOIN NOW FOR BIG WINS!";
-    document.getElementById('actions').style.display = "block";
-  }
-
-  function copyAll() {
-    if (!finalCopy) return;
-    const el = document.createElement('textarea');
-    el.value = finalCopy;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    alert("✅ All Signals Copied to Clipboard!");
-  }
-
-  setInterval(() => {
-    const now = new Date();
-    document.getElementById('time-now').textContent = now.getHours().toString().padStart(2, '0') + ":" + 
-                                                     now.getMinutes().toString().padStart(2, '0') + ":" + 
-                                                     now.getSeconds().toString().padStart(2, '0');
-  }, 1000);
 </script>
 
 </body>
