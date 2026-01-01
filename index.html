@@ -83,7 +83,7 @@
   }
   .copy-btn { background: #fff; color: #000; margin-top: 10px; font-size: 13px; width: 100%; }
 
-  #splash, #login-panel { width: 90%; max-width: 350px; text-align: center; }
+  #splash { width: 90%; max-width: 350px; text-align: center; }
 </style>
 </head>
 <body>
@@ -93,20 +93,13 @@
   <h1 style="font-family:Orbitron; letter-spacing:5px;">DRAGON BET</h1>
 </div>
 
-<div id="login-panel" style="display:none;">
-    <div class="login-status-bar"><div class="neon-dot" style="background:#555; box-shadow:none;"></div> DISCONNECTED</div>
-    <h2 style="font-family:Orbitron; color:var(--primary);">VIP LOGIN</h2>
-    <input type="password" id="pPass" class="login-input" placeholder="ENTER VIP PASSWORD">
-    <button class="btn-vip" onclick="validateLogin()">LOGIN NOW</button>
-</div>
-
 <div id="app-container">
   <div class="login-status-bar"><div class="neon-dot"></div> ACTIVE VIP SESSION</div>
   <h1 class="brand-title">DRAGON BET</h1>
 
   <div class="license-card">
     <span style="font-size: 11px; color: #666;">Account Status</span>
-    <div class="days-display" id="remDays">30</div>
+    <div class="days-display" id="remDays">UNLIMITED</div>
     <span style="font-size:10px; color:var(--gold);">VIP ACCESS GRANTED</span>
   </div>
 
@@ -135,24 +128,13 @@
 </div>
 
 <script>
+  // ආරම්භයේදී Splash Screen එක පෙන්වා කෙලින්ම App එකට යයි
   window.onload = () => {
     setTimeout(() => {
       document.getElementById('splash').style.display = 'none';
-      document.getElementById('login-panel').style.display = 'block';
+      document.getElementById('app-container').style.display = 'block';
     }, 2000);
   };
-
-  function validateLogin() {
-    const pass = document.getElementById('pPass').value;
-    const correctPass = "DragonBet2026"; // ඔබ ඉල්ලා සිටි නව Password එක
-
-    if (pass === correctPass) {
-        document.getElementById('login-panel').style.display = 'none';
-        document.getElementById('app-container').style.display = 'block';
-    } else {
-        alert("Invalid Password!");
-    }
-  }
 
   let finalCopy = "";
 
