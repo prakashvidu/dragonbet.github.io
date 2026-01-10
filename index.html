@@ -2,200 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>🐉 Dragon Bet PRO - VIP Interface</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+<title>Device Locked</title>
 <style>
-  :root {
-    --primary: #ff1a1a;
-    --gold: #ffd700;
-    --dark-bg: #000;
-    --card-bg: rgba(12, 12, 12, 0.95);
-    --whatsapp: #25D366;
-  }
-
-  body, html {
-    margin: 0; padding: 0; width: 100%; min-height: 100vh;
-    background: #000; color: #fff;
-    font-family: 'Rajdhani', sans-serif;
-    display: flex; justify-content: center; align-items: center;
-  }
-
-  .login-status-bar {
-    display: flex; align-items: center; justify-content: center;
-    gap: 8px; font-family: 'Orbitron'; font-size: 10px; color: #888;
-    margin-bottom: 10px;
-  }
-  .neon-dot {
-    width: 8px; height: 8px; background: var(--primary);
-    border-radius: 50%; box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
-    animation: blink 1.2s infinite;
-  }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-  #app-container {
-    width: 92%; max-width: 380px; background: var(--card-bg);
-    border-radius: 35px; padding: 20px; border: 1px solid #1a1a1a;
-    display: none; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-  }
-
-  .brand-title {
-    font-family: 'Orbitron'; font-size: 24px; font-weight: 700;
-    background: linear-gradient(to bottom, #fff, #666);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    letter-spacing: 3px; margin: 5px 0 20px;
-  }
-
-  .license-card {
-    background: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
-    border: 1px solid #333; padding: 20px; border-radius: 25px;
-    margin-bottom: 25px; position: relative; overflow: hidden;
-  }
-
-  .days-display { font-family: 'Orbitron'; font-size: 36px; color: var(--gold); font-weight: bold; margin: 5px 0; }
-
-  .login-input {
-    width: 100%; padding: 15px; background: #080808; border: 1px solid #222;
-    color: var(--gold); border-radius: 12px; text-align: center; margin-bottom: 15px; outline: none; box-sizing: border-box;
-  }
-  .btn-vip {
-    width: 100%; padding: 16px; border-radius: 12px; border: none;
-    background: linear-gradient(45deg, var(--primary), #900);
-    color: white; font-family: 'Orbitron'; font-weight: bold; cursor: pointer;
-    box-shadow: 0 5px 15px rgba(255, 26, 26, 0.3);
-  }
-
-  #loader { display: none; margin: 20px 0; }
-  .bar-container { width: 100%; height: 3px; background: #111; border-radius: 5px; overflow: hidden; }
-  .bar-fill { width: 0%; height: 100%; background: var(--primary); animation: fill 2s infinite; }
-  @keyframes fill { 0% { width: 0; } 100% { width: 100%; } }
-
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
-  .sig-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 15px; border-radius: 18px; }
-  .sig-odd { font-size: 22px; color: var(--gold); font-weight: bold; display: block; }
-
-  .wa-btn {
-    background: var(--whatsapp); color: white; text-decoration: none;
-    display: flex; justify-content: center; align-items: center;
-    padding: 14px; border-radius: 12px; font-weight: bold; margin-top: 15px; gap: 8px;
-  }
-  .copy-btn { background: #fff; color: #000; margin-top: 10px; font-size: 13px; width: 100%; }
-
-  #splash { width: 90%; max-width: 350px; text-align: center; }
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f172a;
+    font-family:Arial, sans-serif;
+}
+.lock-box{
+    background:#020617;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    color:white;
+    box-shadow:0 0 25px rgba(0,0,0,0.7);
+}
+.lock-box img{
+    width:80px;
+    margin-bottom:15px;
+}
+input{
+    padding:10px;
+    width:200px;
+    border-radius:6px;
+    border:none;
+    margin-top:10px;
+}
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    background:#38bdf8;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}
+.error{
+    color:#f87171;
+    margin-top:10px;
+    display:none;
+}
 </style>
 </head>
+
 <body>
 
-<div id="splash">
-  <div style="font-size: 60px; filter: drop-shadow(0 0 10px var(--primary));">🐉</div>
-  <h1 style="font-family:Orbitron; letter-spacing:5px;">DRAGON BET</h1>
-</div>
+<div class="lock-box">
+    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064155.png">
+    <h2>Device Locked</h2>
+    <p>Access කිරීමට Password ඇතුල් කරන්න</p>
 
-<div id="app-container">
-  <div class="login-status-bar"><div class="neon-dot"></div> ACTIVE VIP SESSION</div>
-  <h1 class="brand-title">DRAGON BET</h1>
+    <input type="password" id="pass" placeholder="Enter Password">
+    <br>
+    <button onclick="unlock()">UNLOCK</button>
 
-  <div class="license-card">
-    <span style="font-size: 11px; color: #666;">Account Status</span>
-    <div class="days-display" id="remDays">UNLIMITED</div>
-    <span style="font-size:10px; color:var(--gold);">VIP ACCESS GRANTED</span>
-  </div>
-
-  <div style="display:flex; justify-content:space-between; font-size:10px; color:#666; font-family:Orbitron; margin-bottom:10px;">
-    <span id="time-now">00:00:00</span>
-    <span id="user-display">USER: VIP_MEMBER</span>
-  </div>
-
-  <input type="number" id="input-odd" class="login-input" placeholder="Enter Last Odd">
-  <button class="btn-vip" onclick="triggerSignals()">GENERATE SIGNALS</button>
-
-  <div id="loader">
-    <p style="font-size:11px; color:var(--primary); font-family:Orbitron; margin-bottom:8px;">FETCHING AI PREDICTIONS...</p>
-    <div class="bar-container"><div class="bar-fill"></div></div>
-  </div>
-
-  <div class="grid" id="signal-grid"></div>
-
-  <div id="actions" style="display:none;">
-    <button class="btn-vip copy-btn" onclick="copyAll()"><i class="fas fa-copy"></i> COPY ALL SIGNALS</button>
-  </div>
-
-  <a href="https://wa.me/YOUR_NUMBER" class="wa-btn">
-    <i class="fab fa-whatsapp"></i> MESSAGE ADMIN
-  </a>
+    <div class="error" id="error">❌ Wrong Password</div>
 </div>
 
 <script>
-  // ආරම්භයේදී Splash Screen එක පෙන්වා කෙලින්ම App එකට යයි
-  window.onload = () => {
-    setTimeout(() => {
-      document.getElementById('splash').style.display = 'none';
-      document.getElementById('app-container').style.display = 'block';
-    }, 2000);
-  };
+function unlock(){
+    const password = "1234"; // 🔐 මෙතන password එක වෙනස් කරන්න
+    let input = document.getElementById("pass").value;
 
-  let finalCopy = "";
-
-  function triggerSignals() {
-    const lastOdd = document.getElementById('input-odd').value;
-    if(!lastOdd) { alert("Please enter last odd!"); return; }
-    
-    document.getElementById('signal-grid').innerHTML = "";
-    document.getElementById('actions').style.display = "none";
-    document.getElementById('loader').style.display = "block";
-
-    setTimeout(() => {
-      document.getElementById('loader').style.display = "none";
-      makeSignals();
-    }, 2000);
-  }
-
-  function makeSignals() {
-    const grid = document.getElementById('signal-grid');
-    finalCopy = "🐉 *DRAGON BET VIP SIGNALS* 🐉\n\n";
-    
-    for(let i=1; i<=4; i++) {
-      const dateObj = new Date(Date.now() + (i * 2) * 60000);
-      const hours = String(dateObj.getHours()).padStart(2, '0');
-      const mins = String(dateObj.getMinutes()).padStart(2, '0');
-      const secs = String(dateObj.getSeconds()).padStart(2, '0');
-      const fullTime = `${hours}:${mins}:${secs}`;
-      
-      const oddValue = (Math.random() * 2 + 1.5).toFixed(2);
-      
-      grid.innerHTML += `
-        <div class="sig-box">
-          <span style="font-size:11px; color:#555;">${fullTime}</span>
-          <span class="sig-odd">${oddValue}x</span>
-          <span style="font-size:9px; color:var(--whatsapp);">99% SAFE</span>
-        </div>`;
-      
-      finalCopy += `⏰ ${fullTime} -> 🎯 ${oddValue}x\n`;
+    if(input === password){
+        window.location.href = "home.html";
+    }else{
+        document.getElementById("error").style.display="block";
     }
-    
-    finalCopy += "\n🚀 JOIN NOW FOR BIG WINS!";
-    document.getElementById('actions').style.display = "block";
-  }
-
-  function copyAll() {
-    if (!finalCopy) return;
-    const el = document.createElement('textarea');
-    el.value = finalCopy;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    alert("✅ All Signals Copied to Clipboard!");
-  }
-
-  setInterval(() => {
-    const now = new Date();
-    document.getElementById('time-now').textContent = now.getHours().toString().padStart(2, '0') + ":" + 
-                                                     now.getMinutes().toString().padStart(2, '0') + ":" + 
-                                                     now.getSeconds().toString().padStart(2, '0');
-  }, 1000);
+}
 </script>
 
 </body>
