@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
 <meta charset="UTF-8">
 <title>Device Locked</title>
+
 <style>
 body{
     margin:0;
@@ -10,42 +11,35 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#0f172a;
+    background:#020617;
     font-family:Arial, sans-serif;
+    color:white;
 }
+
 .lock-box{
     background:#020617;
-    padding:30px;
-    border-radius:12px;
+    border:2px solid #ef4444;
+    padding:35px;
+    border-radius:15px;
     text-align:center;
-    color:white;
-    box-shadow:0 0 25px rgba(0,0,0,0.7);
+    max-width:350px;
+    box-shadow:0 0 30px rgba(239,68,68,0.5);
 }
+
 .lock-box img{
-    width:80px;
+    width:90px;
     margin-bottom:15px;
 }
-input{
-    padding:10px;
-    width:200px;
-    border-radius:6px;
-    border:none;
-    margin-top:10px;
+
+.lock-box h1{
+    color:#ef4444;
+    margin-bottom:10px;
 }
-button{
-    margin-top:15px;
-    padding:10px 20px;
-    border:none;
-    border-radius:6px;
-    background:#38bdf8;
-    color:black;
-    font-weight:bold;
-    cursor:pointer;
-}
-.error{
-    color:#f87171;
-    margin-top:10px;
-    display:none;
+
+.lock-box p{
+    font-size:16px;
+    line-height:1.6;
+    color:#e5e7eb;
 }
 </style>
 </head>
@@ -53,29 +47,17 @@ button{
 <body>
 
 <div class="lock-box">
-    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064155.png">
-    <h2>Device Locked</h2>
-    <p>Access කිරීමට Password ඇතුල් කරන්න</p>
-
-    <input type="password" id="pass" placeholder="Enter Password">
-    <br>
-    <button onclick="unlock()">UNLOCK</button>
-
-    <div class="error" id="error">❌ Wrong Password</div>
+    <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png">
+    <h1>🔒 Device Locked</h1>
+    <p>
+        මෙම ඩිවයිස් එකෙන් <br>
+        මෙම වෙබ් අඩවිය භාවිතා කිරීමට <br><br>
+        <b>අවසර නොමැත</b>
+    </p>
+    <p style="color:#f87171;">
+        ❌ Access Disabled
+    </p>
 </div>
-
-<script>
-function unlock(){
-    const password = "1234"; // 🔐 මෙතන password එක වෙනස් කරන්න
-    let input = document.getElementById("pass").value;
-
-    if(input === password){
-        window.location.href = "home.html";
-    }else{
-        document.getElementById("error").style.display="block";
-    }
-}
-</script>
 
 </body>
 </html>
